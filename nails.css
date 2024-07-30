@@ -1,5 +1,6 @@
 body {
     font-family: 'Fira Code iScript', Courier, monospace;
+    background-color: rgba(248, 223, 248, 0.8);
 }
 
 button {
@@ -10,27 +11,29 @@ button {
     font-weight: 700;
     font-size: 15px;
     border-radius: 50%;
-    background-color: rgb(236, 255, 236);
-    border-color: rgb(66, 192, 62);
+    background-color: rgb(255, 236, 254);
+    border-color: rgb(188, 62, 192);
 }
 
 button:active {
     border-style: inset;
-    background-color: rgb(204, 241, 204);
+    background-color: rgb(244, 175, 244);
 }
 
 button:hover {
-    background-color: rgb(236, 248, 236);
+    background-color: rgb(227, 206, 229);
 }
 
 .device {
     border-width: 4px;
     border-style: outset;
     border-radius: 20px;
-    background-color: rgb(249, 254, 249);
-    border-color: rgb(204, 241, 204);
+    background-color: rgb(254, 249, 254,0.6);
+    border-color: rgb(241, 204, 239);
     padding: 35px 0;
-    width: 226px
+    width: 226px;
+    background-image: url(./nailtile.png);
+    background-blend-mode: lighten;
 
 }
 
@@ -57,24 +60,28 @@ button:hover {
     border-style:inset;
     border-width: 3px;
     border-radius: 17px;
-    background-color: rgb(10, 65, 10);
-    border-color: rgb(43, 141, 39);
+    background-color: rgb(64, 10, 65);
+    border-color: rgb(141, 39, 133);
 }
 
 .operation {
-    background-color: rgb(252, 196, 84);
-    border-color: #865a1c;
-    color: white;
-}
-
-.other, .extra {
     background-color: #048A81;
     color: white;
     border-color: #055d57;
 }
 
-.other:hover, .extra:hover {
+.operation:hover {
     background-color: #0f6f69;
+}
+
+.other, .extra {
+    background-color: #f4a433;
+    color: white;
+    border-color: #865a1c;
+}
+
+.other:hover, .extra:hover {
+    background-color:  #d28f31;
 }
 
 .keyboard {

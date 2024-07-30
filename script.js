@@ -1,9 +1,4 @@
-// const operations = {
-//     "+" : function(a,b) {return a+b},
-//     "-" : function(a,b) {return a-b},
-//     "*" : function(a,b) {return a*b},
-//     "/" : function(a,b) {return a/b},
-// };
+/** CONSTANT INITIALIZATION */
 
 const operations = {
     "plus" : "+",
@@ -11,13 +6,6 @@ const operations = {
     "times" : "*",
     "divide" : "/"
 }
-
-const equals = document.querySelector("#equals");
-const comma = document.querySelector("#comma");
-const reset = document.querySelector("#reset");
-
-const display = document.querySelector(".display");
-let content = display.innerHTML;
 
 const numbers = {
     "zero": 0,
@@ -32,6 +20,26 @@ const numbers = {
     "nine": 9
 }
 
+/** GET BUTTONS AND DISPLAY */
+
+const allButtons = document.querySelectorAll("button");
+const equals = document.querySelector("#equals");
+const comma = document.querySelector("#comma");
+const reset = document.querySelector("#reset");
+const display = document.querySelector(".display");
+const numberButtons = document.querySelectorAll(".number");
+const operationButtons = document.querySelectorAll(".operation")
+const signChange = document.querySelector("#sign");
+const nailsButton = document.querySelector("#nails")
+
+const green = document.querySelector("#green");
+const pink = document.querySelector("#pink");
+
+let theme = "green";
+
+/**DEFINE FUNCTIONS */
+
+/**CHOOSE THE OPERATION BASED ON INPUT. A = FIRST NUMBER; B = SECOND NUMBER; O = OPERATOR */
 function operate(a, b, o) {
 let outcome;
     switch (o) {
@@ -43,19 +51,12 @@ let outcome;
 return outcome;
 }
 
-const numberButtons = document.querySelectorAll(".number");
-const operationButtons = document.querySelectorAll(".operation")
+function changeTheme () {
+   if (green.rel == "stylesheet") {green.rel = "alternate stylesheet"; pink.rel = "stylesheet"}
+   else if (pink.rel == "stylesheet") {green.rel = "stylesheet"; pink.rel = "alternate stylesheet"}
+}
 
-//Initialise the variables
-let firstOperand = "";
-let operator = "";
-let secondOperand = "";
-let string = "";
-let n1;
-let n2;
-let result = "";
-
-
+/**THIS FUNCTION GETS THE SINGLE NUMBERS TO BE OPERATED UPON*/
 function splitNumbers (string) {
     if (!operator) {}
     else {
@@ -64,6 +65,26 @@ function splitNumbers (string) {
     }
 }
 
+function changeSign(a) {
+    if (!a.includes("-")) {a = "-" + a; return a}
+    else {
+        temp = parseFloat(a);
+        temp = temp - (2*temp)
+        return temp
+    }
+}
+
+/**Initialise the variables*/
+let firstOperand = "";
+let operator = "";
+let secondOperand = "";
+let string = "";
+let n1;
+let n2;
+let result = "";
+
+/**Define the buttons' functions */
+
 reset.addEventListener("click", () => {
     firstOperand = "";
     operator = "";
@@ -71,10 +92,6 @@ reset.addEventListener("click", () => {
     string = "0";
     display.textContent = string;
 })
-
-
-
-let equallies;
 
 comma.addEventListener("click", function(event) {
     let operand = ".";
@@ -100,7 +117,7 @@ numberButtons.forEach(button => button.addEventListener("click", function(event)
     if(!firstOperand || !operator)
         {if (!firstOperand) firstOperand = "";
          firstOperand += operand}
-    else if (!secondOperand  || !equallies)
+    else if (!secondOperand)
         {if (!secondOperand) secondOperand = "";
             secondOperand += operand}
 
@@ -118,18 +135,29 @@ operationButtons.forEach(button => button.addEventListener("click", function(eve
     else if (firstOperand) {
         operator = theOperator;
     }
-        // {if (!secondOperand) secondOperand = "";
-        //     secondOperand += operand}
-            
+
         string = `${firstOperand}${operator}${secondOperand}`;
         console.log(string)
         display.textContent = string;
 }))
 
 equals.addEventListener("click", function() {
+    if(!secondOperand) {
+        secondOperand = n2;
+        string = `${firstOperand}${operator}${secondOperand}`
+    }
     splitNumbers(string);
     string = operate(n1,n2,operator)
-    firstOperand = string;
+    firstOperand = String(string);
     secondOperand = "";
     display.textContent = firstOperand;
 })
+
+signChange.addEventListener("click", () => {
+    if (!secondOperand) {firstOperand = changeSign(firstOperand);}
+    else if (operator) {secondOperand = changeSign(secondOperand);}
+    string = `${firstOperand}${operator}${secondOperand}`
+    display.textContent = string;
+})
+
+nailsButton.addEventListener("click", () => changeTheme())
