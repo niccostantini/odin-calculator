@@ -52,8 +52,8 @@ return outcome;
 }
 
 function changeTheme () {
-   if (green.rel == "stylesheet") {green.rel = "alternate stylesheet"; pink.rel = "stylesheet"}
-   else if (pink.rel == "stylesheet") {green.rel = "stylesheet"; pink.rel = "alternate stylesheet"}
+   if (green.rel == "stylesheet") {green.rel = "alternate stylesheet"; pink.rel = "stylesheet"; nailsButton.textContent = "🦖"}
+   else if (pink.rel == "stylesheet") {green.rel = "stylesheet"; pink.rel = "alternate stylesheet"; nailsButton.textContent = "💅🏼"}
 }
 
 /**THIS FUNCTION GETS THE SINGLE NUMBERS TO BE OPERATED UPON*/
